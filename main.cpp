@@ -100,6 +100,17 @@ node *copyList(node *head) {
     return result;
 }
 
+node *copyList2(node *head){
+    if(head == nullptr) return nullptr;
+    node *result = nullptr;
+
+    while(head != nullptr){
+        insertLast(&result,head->id);
+        head = head->next;
+    }
+    return result;
+}
+
 node *concat(node *head1, node *head2){
 
     node *result = copyList(head1);
@@ -146,18 +157,18 @@ int searchList(node *head, int n){
     return -1;
 }
 
-node *unionList(node *head1, node *head2){
-    node *tmp = concat(head1, head2);
-    node *result;
-    node *current = result;
-
-    while (tmp != nullptr){
-        while (current != nullptr) {
-
-        }
-    }
-
-}
+//node *unionList(node *head1, node *head2){
+//    node *tmp = concat(head1, head2);
+//    node *result;
+//    node *current = result;
+//
+//    while (tmp != nullptr){
+//        while (current != nullptr) {
+//
+//        }
+//    }
+//
+//}
 
 int main() {
 
@@ -179,6 +190,9 @@ int main() {
     node *headCopy = copyList(head);
     printList(headCopy);
 
+    node *headCopy2 = copyList2(head);
+    printList(headCopy2);
+
     node *concatList = concat(head, headCopy);
     printList(concatList);
 
@@ -187,6 +201,8 @@ int main() {
 
     std::cout << "Looking for 59 " << searchList(head, 59) << std::endl;
     std::cout << "Looking for 60 " << searchList(head, 60) << std::endl;
+
+
 
     return 0;
 }
